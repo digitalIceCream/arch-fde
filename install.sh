@@ -29,18 +29,17 @@ set -euo pipefail
 # CONFIGURATION — Review and adjust these before running anything
 # =============================================================================
 
-DISK="/dev/nvme0n1"              # Target disk — use 'lsblk' to identify
-                              # NVMe drives are typically /dev/nvme0n1
-HOSTNAME="archlinux"            # Machine hostname
+DISK="/dev/nvme0n1"           # Target disk — use 'lsblk' to identify
+HOSTNAME="archbox"            # Machine hostname
 USERNAME="user"               # Non-root user to create
 TIMEZONE="Europe/Berlin"      # timedatectl list-timezones
-LOCALE="en_gb.UTF-8"          # Locale
-KEYMAP="de-latin1-nodeadkeys"                   # Console keymap (loadkeys)
+LOCALE="en_GB.UTF-8"          # Locale
+KEYMAP="de-latin1-nodeadkeys" # Console keymap (loadkeys)
 
-# Partition naming — adjust for NVMe (e.g., /dev/nvme0n1p1, /dev/nvme0n1p2)
-# For SATA/USB drives it's /dev/sdX1, /dev/sdX2
-PART_EFI="${DISK}p1"           # EFI System Partition
-PART_ROOT="${DISK}p2"          # LUKS partition (will hold root)
+# NVMe partition naming uses a 'p' separator (e.g., /dev/nvme0n1p1)
+# For SATA/USB drives it would be /dev/sdX1, /dev/sdX2 (no 'p')
+PART_EFI="${DISK}p1"          # EFI System Partition
+PART_ROOT="${DISK}p2"         # LUKS partition (will hold root)
 CRYPT_NAME="cryptdev"        # dm-crypt mapped device name
 
 # =============================================================================
